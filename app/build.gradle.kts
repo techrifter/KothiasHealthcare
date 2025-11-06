@@ -15,14 +15,14 @@ val localProperties = Properties().apply {
 
 android {
     namespace = "com.kothias.clinic"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.kothias.clinic"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        targetSdk = 35
+        versionCode = 3
+        versionName = "1.1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -90,7 +90,7 @@ dependencies {
     implementation("de.hdodenhof:circleimageview:3.1.0")
 
     // Google Play Services
-    implementation("com.google.android.gms:play-services-safetynet:17.0.0")
+    implementation("com.google.android.play:integrity:1.5.0")
 
     // Material Components
     implementation("androidx.gridlayout:gridlayout:1.0.0")
