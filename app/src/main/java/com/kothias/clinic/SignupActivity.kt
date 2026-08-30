@@ -1,5 +1,6 @@
 package com.kothias.clinic
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
@@ -15,6 +16,7 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
 class SignupActivity : AppCompatActivity() {
@@ -40,6 +42,24 @@ class SignupActivity : AppCompatActivity() {
         dobEditText = findViewById(R.id.dob)
         signupButton = findViewById(R.id.signup)
         verificationCodeEditText = findViewById(R.id.verification_code)
+
+        // Set onClickListener for data input field
+        dobEditText.setOnClickListener {
+            // Get the current date
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            // Create and show the DatePickerDialog
+            val datePickerDialog = DatePickerDialog(
+                this, { _, selectedYear, selectedMonth, selectedDayOfMonth ->
+                    // Format and display the selected date
+                    dobEditText.setText("$selectedDayOfMonth/${selectedMonth + 1}/$selectedYear")
+                }, year, month, day
+            )
+            datePickerDialog.show()
+        }
 
         // Set onClickListener for signup button
         signupButton.setOnClickListener {
